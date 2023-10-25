@@ -1,0 +1,39 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "{D4CCF57F-4413-CEB3-E100-C79AF7665BE9}",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "ARPGame",
+			"Type": "Runtime",
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"Engine",
+				"CoreUObject",
+				"UMG"
+			]
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "ModelingToolsEditorMode",
+			"Enabled": true,
+			"TargetAllowList": [
+				"Editor"
+			]
+		},
+		{
+			"Name": "EnhancedInput",
+			"Enabled": true
+		},
+		{
+			"Name": "SQLiteCore",
+			"Enabled": true
+		},
+		{
+			"Name": "SQLiteSupport",
+			"Enabled": true
+		}
+	]
+}
