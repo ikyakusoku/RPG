@@ -10,6 +10,7 @@
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
 #include "StorableItem.h"
+#include"Item.h"
 
 // Sets default values
 APlayerCharacter::APlayerCharacter()
@@ -110,7 +111,7 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 
 		if (IA_PickUp) {
 			//EnhancedInputComponent->BindAction(IA_OpenInventory, ETriggerEvent::Started, this, &APlayerCharacter::CheckInventoryComponent);
-			EnhancedInputComponent->BindAction(IA_PickUp, ETriggerEvent::Triggered, this, &APlayerCharacter::OpenInventoryUI);
+			EnhancedInputComponent->BindAction(IA_PickUp, ETriggerEvent::Triggered, this, &APlayerCharacter::Pickup);
 		}
 	}
 #pragma endregion EnhancedInputBind 
@@ -164,7 +165,10 @@ void APlayerCharacter::Pickup(const FInputActionValue& InputActionValue)
 {
 	//调用inventoryComponent组件的功能
 	if (backPack) {
-		
+		FTransform defaultLocation;
+		AItem* item = GetWorld()->SpawnActor<AItem>(AItem::StaticClass());
+		GEngine->AddOnScreenDebugMessage(-1, 10.f, FColor::Blue, FString::Printf(TEXT("additemtoinventory.")));
+		backPack->AddItemToInventory(item);
 	}
 	else {
 		GEngine->AddOnScreenDebugMessage(1, 10, FColor::Blue, FString::Printf(TEXT("inventoryComponent hasn't load.")));

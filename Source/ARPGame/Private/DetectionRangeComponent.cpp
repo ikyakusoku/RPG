@@ -66,7 +66,7 @@ bool UDetectionRangeComponent::DetectPawnInRange()
 		FVector2D pawn2DLoc = FVector2D(pawnLocation.X, pawnLocation.Y);
 		FVector2D actor2DLoc = FVector2D(BBCenter.X, BBCenter.Y);
 		if (FVector2D::Distance(pawn2DLoc, actor2DLoc)<diagonalDistance+extraRange) {
-			GEngine->AddOnScreenDebugMessage(-1, 10.f, FColor::Blue, FString::Printf(TEXT("detect pawn")));
+			//GEngine->AddOnScreenDebugMessage(-1, 10.f, FColor::Blue, FString::Printf(TEXT("detect pawn")));
 			return true;
 		}
 	}

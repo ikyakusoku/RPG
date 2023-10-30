@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
-#include"Inventory.h"
 #include "Components/WidgetComponent.h"
 #include "InventoryComponent.generated.h"
 
@@ -27,19 +26,20 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 private:
 	//背包具有多个库网格，可以分别只显示武器或者道具，或者混合显示
-	TArray<AInventory*> inventoryArray;
+	TArray<class AInventory*> inventoryArray;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "UI", meta = (AllowPrivateAccess = "true"))
-	TSubclassOf<UUserWidget> inventoryComponentUIClass;
-
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UI", meta = (AllowPrivateAccess = "true"))
-	UUserWidget* inventoryComponentUI;
+	TSubclassOf<class UInventoryComponentWidget> inventoryComponentUIClass;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "UI", meta = (AllowPrivateAccess = "true"))
+	class UInventoryComponentWidget* inventoryComponentUI;
 
 private:
 	void Open();
 	void Close();
 public:
+	//背包打开和关闭
 	void InteractWithPlayer();
-	
+	//调用所有背包的additem()
+	void AddItemToInventory(class AItem* _item_toAdd);
 		
 };
